@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- PLACEHOLDER favicon — replace with the official brand icon. Colours: Midnight Navy / Royal Gold. -->
+  <rect width="64" height="64" rx="14" fill="#0B2346"/>
+  <g transform="translate(6 6) scale(0.8125)" stroke="#C9A14A" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M13 40A21 21 0 1 1 51 40" stroke-width="2.5"/>
+    <path d="M32 13 45.5 50H41l-9-25.5L23 50h-4.5L32 13Z" fill="#C9A14A" stroke="none"/>
+    <path d="M15 50h11M38 50h11" stroke-width="2.25"/>
+    <path d="M7 38h17.5l2.5-5 2.5 10 3-14 2.5 12 2-3h20" stroke-width="2.25"/>
+  </g>
+</svg>

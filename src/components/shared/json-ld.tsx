@@ -1,0 +1,14 @@
+type JsonLdDocument = { "@context": "https://schema.org" } & object;
+
+/**
+ * Renders schema.org structured data. `<` is escaped so content can never
+ * break out of the script tag.
+ */
+export function JsonLd({ data }: { data: JsonLdDocument | readonly JsonLdDocument[] }) {
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data).replace(/</g, "\\u003c") }}
+    />
+  );
+}

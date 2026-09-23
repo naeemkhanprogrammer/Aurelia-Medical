@@ -1,0 +1,99 @@
+/*
+ * ─────────────────────────────────────────────────────────────────────────────
+ * Aurelia Medical Group — Design tokens
+ * ─────────────────────────────────────────────────────────────────────────────
+ * SINGLE SOURCE OF TRUTH for colour. Change a value in "1. Brand primitives"
+ * and every shade, surface, border, button and focus ring across the site
+ * updates automatically (all other colours are derived with `color-mix`).
+ *
+ * Layers:
+ *   1. Brand primitives   — the only hex values in the codebase.
+ *   2. Derived scales     — tints/shades computed from the primitives.
+ *   3. Semantic tokens    — what components actually use (canvas, surface…).
+ *
+ * Tailwind utilities (`bg-primary`, `text-muted-foreground`…) are mapped to the
+ * semantic tokens in `globals.css` via `@theme inline`.
+ *
+ * Re-theming: add a `[data-theme="<name>"]` block that overrides layer 1 only.
+ * See docs/03-design-system.md.
+ */
+
+:root {
+  /* ── 1. Brand primitives (from the Aurelia brand guide) ─────────────────── */
+  --brand-primary: #0b2346; /* Midnight Navy */
+  --brand-accent: #c9a14a; /* Royal Gold */
+  --brand-accent-soft: #e6d3a3; /* Champagne Gold */
+  --brand-canvas: #f8f7f3; /* Soft Ivory */
+
+  --brand-white: #ffffff;
+  --brand-black: #000000;
+  --brand-success: #2f7d5b;
+  --brand-danger: #b3261e;
+
+  /* ── 2. Derived scales ──────────────────────────────────────────────────── */
+  --primary-50: color-mix(in oklab, var(--brand-primary) 4%, var(--brand-white));
+  --primary-100: color-mix(in oklab, var(--brand-primary) 8%, var(--brand-white));
+  --primary-200: color-mix(in oklab, var(--brand-primary) 16%, var(--brand-white));
+  --primary-300: color-mix(in oklab, var(--brand-primary) 30%, var(--brand-white));
+  --primary-400: color-mix(in oklab, var(--brand-primary) 48%, var(--brand-white));
+  --primary-500: color-mix(in oklab, var(--brand-primary) 66%, var(--brand-white));
+  --primary-600: color-mix(in oklab, var(--brand-primary) 80%, var(--brand-white));
+  --primary-700: color-mix(in oklab, var(--brand-primary) 90%, var(--brand-white));
+  --primary-800: var(--brand-primary);
+  --primary-900: color-mix(in oklab, var(--brand-primary) 82%, var(--brand-black));
+  --primary-950: color-mix(in oklab, var(--brand-primary) 64%, var(--brand-black));
+
+  --accent-50: color-mix(in oklab, var(--brand-accent) 8%, var(--brand-white));
+  --accent-100: color-mix(in oklab, var(--brand-accent) 16%, var(--brand-white));
+  --accent-200: color-mix(in oklab, var(--brand-accent) 32%, var(--brand-white));
+  --accent-300: color-mix(in oklab, var(--brand-accent) 56%, var(--brand-white));
+  --accent-400: color-mix(in oklab, var(--brand-accent) 80%, var(--brand-white));
+  --accent-500: var(--brand-accent);
+  --accent-600: color-mix(in oklab, var(--brand-accent) 86%, var(--brand-black));
+  --accent-700: color-mix(in oklab, var(--brand-accent) 70%, var(--brand-black));
+  --accent-800: color-mix(in oklab, var(--brand-accent) 55%, var(--brand-black));
+
+  /* ── 3. Semantic tokens ─────────────────────────────────────────────────── */
+  /* Page & surfaces */
+  --canvas: var(--brand-canvas);
+  --surface: var(--brand-white);
+  --surface-muted: color-mix(in oklab, var(--brand-primary) 5%, var(--brand-canvas));
+  --surface-accent: color-mix(in oklab, var(--brand-accent-soft) 35%, var(--brand-canvas));
+
+  /* Text */
+  --foreground: var(--primary-900);
+  --heading: var(--brand-primary);
+  --muted-foreground: color-mix(in oklab, var(--brand-primary) 68%, var(--brand-white));
+
+  /* Brand roles */
+  --primary: var(--brand-primary);
+  --primary-hover: color-mix(in oklab, var(--brand-primary) 86%, var(--brand-white));
+  --primary-foreground: var(--brand-canvas);
+
+  --accent: var(--brand-accent);
+  --accent-hover: color-mix(in oklab, var(--brand-accent) 88%, var(--brand-white));
+  --accent-foreground: var(--brand-primary);
+  --accent-soft: var(--brand-accent-soft);
+  /* Gold is too light for text on ivory (≈2.1:1). Use `accent-ink` for gold-toned text on light surfaces (≥4.5:1). */
+  --accent-ink: var(--accent-700);
+
+  /* Inverse (dark navy) surfaces: hero, CTA band, footer */
+  --inverse: var(--brand-primary);
+  --inverse-raised: color-mix(in oklab, var(--brand-primary) 88%, var(--brand-white));
+  --inverse-foreground: var(--brand-canvas);
+  --inverse-muted: color-mix(in oklab, var(--brand-canvas) 74%, var(--brand-primary));
+  --inverse-border: color-mix(in oklab, var(--brand-canvas) 16%, var(--brand-primary));
+
+  /* Lines & focus */
+  --border: color-mix(in oklab, var(--brand-primary) 11%, var(--brand-white));
+  --border-strong: color-mix(in oklab, var(--brand-primary) 22%, var(--brand-white));
+  --ring: var(--brand-accent);
+
+  /* Status */
+  --success: var(--brand-success);
+  --danger: var(--brand-danger);
+
+  /* Elevation — tinted with the primary colour so shadows feel on-brand */
+  --shadow-color: color-mix(in srgb, var(--brand-primary) 10%, transparent);
+  --shadow-color-strong: color-mix(in srgb, var(--brand-primary) 18%, transparent);
+}
