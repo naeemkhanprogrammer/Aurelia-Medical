@@ -2,22 +2,27 @@
 
 ## Routes (`src/config/routes.ts`)
 
-| Route                                                                                      | Page                        | Status                        |
-| ------------------------------------------------------------------------------------------ | --------------------------- | ----------------------------- |
-| `/`                                                                                        | Home                        | ✅                            |
-| `/doctors`, `/doctors/[slug]`                                                              | Doctors directory / profile | ✅                            |
-| `/services`, `/services/[slug]`                                                            | Services overview / detail  | ✅                            |
-| `/book-appointment`                                                                        | Booking hand-off            | ✅                            |
-| `/about` `/insurance` `/patient-resources` `/careers` `/contact` `/faqs` `/privacy-policy` | Phase 1 pages               | ⏳                            |
-| `/referrals` `/new-patients` `/telemedicine` `/community-programs`                         | Coming-soon scaffolds       | ⏳                            |
-| Blog / News                                                                                | —                           | Future phase (not scaffolded) |
+| Route                                                                                      | Page                                          | Status                        |
+| ------------------------------------------------------------------------------------------ | --------------------------------------------- | ----------------------------- |
+| `/`                                                                                        | Home                                          | ✅                            |
+| `/doctors`, `/doctors/[slug]`                                                              | Doctors directory / profile                   | ✅                            |
+| `/services`, `/services/[slug]`                                                            | Services overview / detail                    | ✅                            |
+| `/book-appointment`                                                                        | Booking hand-off                              | ✅                            |
+| `/about` `/insurance` `/patient-resources` `/careers` `/contact` `/faqs` `/privacy-policy` | Phase 1 pages                                 | ✅                            |
+| `/referrals` `/new-patients` `/telemedicine` `/community-programs`                         | Progressive pages (noindex until `published`) | ✅                            |
+| Blog / News                                                                                | —                                             | Future phase (not scaffolded) |
 
 ## Layouts
 
 - `app/layout.tsx` — `<html>`, fonts, global metadata (`metadataBase`, title template `%s | Aurelia Medical Group`, robots).
 - `app/(marketing)/layout.tsx` — `SiteShell` (skip link, header, `<main id="main-content">`, footer).
 - `app/not-found.tsx` renders `SiteShell` itself (it sits outside the route group).
-- `(marketing)/loading.tsx`, `(marketing)/error.tsx`, `global-error.tsx`.
+- `(marketing)/error.tsx`, `global-error.tsx`.
+- **No `loading.tsx`** in the marketing group: every page is static, and a loading boundary makes Next stream the spinner _into the static HTML_ (spinner + footer paint first, then content swaps in) — measured CLS 0.30 and slower LCP. Add `loading.tsx` only at the level of a future dynamic route.
+
+## Metadata files
+
+`sitemap.ts`, `robots.ts`, `manifest.ts`, `icon.svg`, `opengraph-image.tsx` (1200×630 PNG generated at build).
 
 ## Next 16 conventions used
 

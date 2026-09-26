@@ -13,11 +13,11 @@ Build trust & credibility · strong local SEO · showcase doctors & services · 
 
 ## Phases
 
-| Phase  | Scope                                                                                                                                                                                                                                             | Status          |
-| ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- |
-| 1      | Presentation site: Home, About, Doctors, Services, Book Appointment (redirect), Insurance, Patient Resources, Careers (redirect), Contact, FAQs, Privacy Policy + "coming soon" pages (Referrals, New Patients, Telemedicine, Community Programs) | **In progress** |
-| Future | **Blog / News & Announcements** (CMS-driven dynamic content) — intentionally _not_ built in Phase 1 per client direction. The data-access layer (`src/features/*/api.ts`) is already async so a CMS can plug in.                                  | Planned         |
-| Future | Back-end features (TanStack Query for server state, authenticated portals, etc.)                                                                                                                                                                  | Planned         |
+| Phase  | Scope                                                                                                                                                                                                                                             | Status                                  |
+| ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------- |
+| 1      | Presentation site: Home, About, Doctors, Services, Book Appointment (redirect), Insurance, Patient Resources, Careers (redirect), Contact, FAQs, Privacy Policy + "coming soon" pages (Referrals, New Patients, Telemedicine, Community Programs) | **Done** (content placeholders pending) |
+| Future | **Blog / News & Announcements** (CMS-driven dynamic content) — intentionally _not_ built in Phase 1 per client direction. The data-access layer (`src/features/*/api.ts`) is already async so a CMS can plug in.                                  | Planned                                 |
+| Future | Back-end features (TanStack Query for server state, authenticated portals, etc.)                                                                                                                                                                  | Planned                                 |
 
 ## Critical constraints
 
@@ -25,7 +25,7 @@ Build trust & credibility · strong local SEO · showcase doctors & services · 
 2. All outbound destinations live in **one config file**: `src/config/external-links.ts` (placeholders flagged `isPlaceholder: true`).
 3. **No analytics, tracking, or data-capturing third-party embeds** without explicit sign-off (PIPEDA / Alberta HIA context).
    - Fonts are self-hosted via `next/font` (no runtime Google requests).
-   - The Google Maps embed (Contact page) is the only planned third-party embed; it is behind the `FEATURE_MAP_EMBED` flag and must be privacy-reviewed before launch.
+   - The Google Maps embed (Contact page) is the only third-party embed. It is **click-to-load** (nothing is sent to Google until the visitor opts in) and behind the `FEATURE_MAP_EMBED` flag.
 
 ## Compliance notes (to confirm with the clinic)
 
@@ -35,14 +35,16 @@ Build trust & credibility · strong local SEO · showcase doctors & services · 
 
 ## Placeholder inventory (replace before launch)
 
-| Item                        | Location                                             |
-| --------------------------- | ---------------------------------------------------- |
-| Logo & favicon              | `src/components/shared/logo.tsx`, `src/app/icon.svg` |
-| Contact details, hours, map | `src/config/contact.ts`                              |
-| Third-party URLs            | `src/config/external-links.ts`                       |
-| Social profiles             | `src/config/navigation.ts` (`socialLinks`)           |
-| Doctor profiles (dummy)     | `src/data/doctors.ts`                                |
-| Service copy                | `src/data/services.ts`                               |
-| Testimonials                | `src/data/testimonials.ts`                           |
-| Stats                       | `src/data/pages/home.ts`                             |
-| Legal name, domain          | `src/config/site.ts`, `NEXT_PUBLIC_SITE_URL`         |
+| Item                                           | Location                                                                               |
+| ---------------------------------------------- | -------------------------------------------------------------------------------------- |
+| Logo & favicon                                 | `src/components/shared/logo.tsx`, `src/app/icon.svg`                                   |
+| Contact details, hours, map                    | `src/config/contact.ts`                                                                |
+| Third-party URLs                               | `src/config/external-links.ts`                                                         |
+| Social profiles                                | `src/config/navigation.ts` (`socialLinks`)                                             |
+| Doctor profiles (dummy)                        | `src/data/doctors.ts`                                                                  |
+| Service copy                                   | `src/data/services.ts`                                                                 |
+| Testimonials                                   | `src/data/testimonials.ts`                                                             |
+| Stats                                          | `src/data/pages/home.ts`                                                               |
+| FAQs, fees, careers, resources, privacy policy | `src/data/faqs.ts`, `src/data/pages/*`, `src/data/careers.ts`, `src/data/resources.ts` |
+| Downloadable forms (PDFs)                      | `public/documents/` + `file` field in `src/data/resources.ts`                          |
+| Legal name, domain                             | `src/config/site.ts`, `NEXT_PUBLIC_SITE_URL`                                           |

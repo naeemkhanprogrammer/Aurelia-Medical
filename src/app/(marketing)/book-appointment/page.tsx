@@ -19,6 +19,7 @@ import { routes } from "@/config/routes";
 import { uiStrings } from "@/data/common";
 import { bookingPageContent as content } from "@/data/pages/booking";
 import { getServices } from "@/features/services/api";
+import { buildBreadcrumbs } from "@/lib/breadcrumbs";
 import { breadcrumbJsonLd } from "@/lib/seo/json-ld";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { formatHours } from "@/lib/format";
@@ -27,10 +28,7 @@ export const metadata: Metadata = buildMetadata({ ...content.seo, path: routes.b
 
 export default async function BookAppointmentPage() {
   const services = await getServices();
-  const breadcrumbs = [
-    { name: uiStrings.breadcrumbHome, path: routes.home },
-    { name: content.seo.title, path: routes.bookAppointment },
-  ];
+  const breadcrumbs = buildBreadcrumbs({ name: content.seo.title, path: routes.bookAppointment });
 
   return (
     <>

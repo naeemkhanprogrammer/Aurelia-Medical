@@ -10,7 +10,8 @@ import { Cormorant_Garamond, Montserrat } from "next/font/google";
  */
 export const fontHeading = Cormorant_Garamond({
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
+  // Only the weight the design uses (SemiBold, per brand guide) — every extra weight is another font file.
+  weight: "600",
   style: ["normal", "italic"],
   variable: "--font-cormorant",
   display: "swap",

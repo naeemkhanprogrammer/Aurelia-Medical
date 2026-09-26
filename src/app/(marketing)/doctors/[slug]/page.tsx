@@ -22,6 +22,7 @@ import { doctorsPageContent } from "@/data/pages/doctors";
 import { getDoctorBySlug, getDoctorSlugs } from "@/features/doctors/api";
 import { DoctorAvatar } from "@/features/doctors/components/doctor-avatar";
 import { getServicesBySlugs } from "@/features/services/api";
+import { buildBreadcrumbs } from "@/lib/breadcrumbs";
 import { breadcrumbJsonLd, physicianJsonLd } from "@/lib/seo/json-ld";
 import { buildMetadata } from "@/lib/seo/metadata";
 
@@ -55,11 +56,10 @@ export default async function DoctorProfilePage({ params }: PageProps<"/doctors/
   const services = await getServicesBySlugs(doctor.serviceSlugs);
   const t = doctorsPageContent.profile;
   const needsReferral = services.some((service) => service.referralRequired);
-  const breadcrumbs = [
-    { name: uiStrings.breadcrumbHome, path: routes.home },
+  const breadcrumbs = buildBreadcrumbs(
     { name: doctorsPageContent.seo.title, path: routes.doctors },
     { name: doctor.name, path: routes.doctor(doctor.slug) },
-  ];
+  );
 
   return (
     <>

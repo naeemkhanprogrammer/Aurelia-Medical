@@ -1,4 +1,4 @@
-import type { IconName, ImageAsset, InternalLink, SectionIntro } from "./common";
+import type { CtaLink, IconName, ImageAsset, InternalLink, SectionIntro } from "./common";
 
 /* ── Services ─────────────────────────────────────────────────────────────── */
 
@@ -142,4 +142,93 @@ export interface HomeContent {
   testimonials: SectionIntro;
   stats: { title: string; items: readonly Stat[] };
   ctaBand: CtaBandContent;
+}
+
+/* ── Generic content blocks ───────────────────────────────────────────────── */
+
+/** Icon + title + description with no link (values, benefits, highlights). */
+export interface InfoItem {
+  icon: IconName;
+  title: string;
+  description: string;
+}
+
+/* ── FAQs ─────────────────────────────────────────────────────────────────── */
+
+export interface FaqItem {
+  id: string;
+  question: string;
+  /** Plain-text paragraphs. */
+  answer: readonly string[];
+}
+
+export interface FaqCategory {
+  id: string;
+  title: string;
+  items: readonly FaqItem[];
+}
+
+/* ── Careers ──────────────────────────────────────────────────────────────── */
+
+export type EmploymentType = "Full-time" | "Part-time" | "Casual" | "Contract" | "Locum";
+
+export interface CareerPosition {
+  id: string;
+  title: string;
+  department: string;
+  employmentType: EmploymentType;
+  location: string;
+  summary: string;
+  responsibilities: readonly string[];
+  requirements: readonly string[];
+}
+
+/* ── Patient resources ────────────────────────────────────────────────────── */
+
+export interface ResourceDocument {
+  id: string;
+  title: string;
+  description: string;
+  category: string;
+  /** Path under /public (e.g. /documents/intake-form.pdf). Omit until the file is supplied. */
+  file?: { href: string; format: "PDF" | "DOCX"; sizeLabel: string };
+}
+
+export interface ExternalResource {
+  title: string;
+  description: string;
+  href: string;
+  organization: string;
+}
+
+/* ── Insurance ────────────────────────────────────────────────────────────── */
+
+export interface FeeItem {
+  service: string;
+  /** Display string so the clinic can write "$25", "From $40" or "Varies". */
+  fee: string;
+}
+
+/* ── Legal ────────────────────────────────────────────────────────────────── */
+
+export interface LegalSection {
+  id: string;
+  title: string;
+  paragraphs: readonly string[];
+  list?: readonly string[];
+}
+
+/* ── Progressive ("coming soon") pages ────────────────────────────────────── */
+
+export interface ProgressivePageContent {
+  seo: { title: string; description: string };
+  /** `false` → page is marked noindex and left out of the sitemap until real content ships. */
+  published: boolean;
+  hero: { eyebrow: string; title: string; highlight?: string; description: string };
+  statusLabel: string;
+  intro: readonly string[];
+  highlights: readonly InfoItem[];
+  actions: readonly CtaLink[];
+  noticeTitle: string;
+  notice: string;
 }

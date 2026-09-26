@@ -17,6 +17,7 @@ export const contactConfig: ContactConfig = {
     countryCode: "CA",
   },
   geo: { latitude: 52.2681, longitude: -113.8112 },
+  timeZone: "America/Edmonton",
   hours: [
     {
       label: "Mon – Thu",
@@ -29,6 +30,22 @@ export const contactConfig: ContactConfig = {
     { label: "Sunday", days: ["Sunday"] },
   ],
   hoursNote: "Urgent care by appointment",
+  visitInfo: [
+    {
+      title: "Parking",
+      description:
+        "Free patient parking is available on site, including accessible stalls near the entrance.",
+    },
+    {
+      title: "Accessibility",
+      description:
+        "Step-free, wheelchair-accessible entrance, elevator access and accessible washrooms.",
+    },
+    {
+      title: "Public transit",
+      description: "Served by Red Deer Transit routes stopping on 50th Street.",
+    },
+  ],
   map: {
     embedUrl: "https://www.google.com/maps?q=5010+50+Street,+Red+Deer,+AB+T4N+1X7&output=embed",
     directionsUrl:

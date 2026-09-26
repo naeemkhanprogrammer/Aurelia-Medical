@@ -6,12 +6,12 @@ import { CtaBand } from "@/components/sections/cta-band";
 import { PageHero } from "@/components/sections/page-hero";
 import { JsonLd } from "@/components/shared/json-ld";
 import { routes } from "@/config/routes";
-import { uiStrings } from "@/data/common";
 import { homeContent } from "@/data/pages/home";
 import { doctorsPageContent as content } from "@/data/pages/doctors";
 import { getDoctors } from "@/features/doctors/api";
 import { DoctorDirectory } from "@/features/doctors/components/doctor-directory";
 import { getServices } from "@/features/services/api";
+import { buildBreadcrumbs } from "@/lib/breadcrumbs";
 import { breadcrumbJsonLd } from "@/lib/seo/json-ld";
 import { buildMetadata } from "@/lib/seo/metadata";
 
@@ -24,10 +24,7 @@ export default async function DoctorsPage() {
     .filter((service) => doctors.some((doctor) => doctor.serviceSlugs.includes(service.slug)))
     .map(({ slug, name }) => ({ slug, name }));
 
-  const breadcrumbs = [
-    { name: uiStrings.breadcrumbHome, path: routes.home },
-    { name: content.seo.title, path: routes.doctors },
-  ];
+  const breadcrumbs = buildBreadcrumbs({ name: content.seo.title, path: routes.doctors });
 
   return (
     <>

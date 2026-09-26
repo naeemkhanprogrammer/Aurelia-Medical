@@ -23,4 +23,4 @@ Every branch/PR gets a preview URL. Previews are **not indexable** (`robots.ts` 
 - [ ] `pnpm test:e2e` against the preview (`PLAYWRIGHT_BASE_URL=<preview-url> pnpm test:e2e`)
 - [ ] Lighthouse ≥ 90 on preview
 - [ ] Placeholder inventory (docs/00) cleared
-- [ ] CSP added (docs/07)
+- [ ] CSP verified on the production domain (DevTools console shows no CSP violations)

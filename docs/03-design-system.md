@@ -58,7 +58,8 @@ Fluid scale (`clamp`): `text-display`, `text-h1`, `text-h2`, `text-h3`, `text-h4
 | Icon                                   | `ui/icon.tsx`      | name-based registry (`constants/icons.ts`)                                   |
 
 Shared: `Logo`/`LogoMark` (placeholder), `ExternalLink`, `BookingLink`, `PhoneLink`, `SectionHeading`, `FeatureCard`, `Carousel`, `Reveal`, `ProgressRing`, `Breadcrumbs`, `StepList`, `CheckList`, `EmergencyNotice`, `ProseBlock`, `JsonLd`.
-Sections: `PageHero`, `SplitSection`, `CtaBand`.
+Also: `CtaButton` (renders a content-defined `CtaLink`), `InfoCard`.
+Sections: `PageHero`, `SplitSection`, `CtaBand`, `ProgressivePage`, `LegalDocument`.
 
 ## Imagery
 

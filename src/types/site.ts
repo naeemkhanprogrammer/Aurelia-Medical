@@ -45,8 +45,12 @@ export interface ContactConfig {
   email: string;
   address: PostalAddress;
   geo: { latitude: number; longitude: number };
+  /** IANA time zone of the clinic, used for the live "Open now" indicator. */
+  timeZone: string;
   hours: readonly OpeningHours[];
   hoursNote: string;
+  /** Practical visit information (parking, accessibility, transit). */
+  visitInfo: readonly { title: string; description: string }[];
   map: {
     /** Google Maps embed URL (iframe src). Placeholder until the clinic confirms its listing. */
     embedUrl: string;

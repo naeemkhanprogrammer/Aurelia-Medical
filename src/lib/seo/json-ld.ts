@@ -1,12 +1,12 @@
 import "server-only";
 
-import type { BreadcrumbList, MedicalClinic, Physician, WithContext } from "schema-dts";
+import type { BreadcrumbList, FAQPage, MedicalClinic, Physician, WithContext } from "schema-dts";
 
 import { contactConfig } from "@/config/contact";
 import { env } from "@/config/env";
 import { routes } from "@/config/routes";
 import { siteConfig } from "@/config/site";
-import type { Doctor, Service } from "@/types/content";
+import type { Doctor, FaqCategory, Service } from "@/types/content";
 
 const absolute = (path: string) => new URL(path, env.siteUrl).toString();
 
@@ -100,5 +100,19 @@ export function breadcrumbJsonLd(
       name: item.name,
       item: absolute(item.path),
     })),
+  };
+}
+
+export function faqPageJsonLd(categories: readonly FaqCategory[]): WithContext<FAQPage> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: categories.flatMap((category) =>
+      category.items.map((item) => ({
+        "@type": "Question" as const,
+        name: item.question,
+        acceptedAnswer: { "@type": "Answer" as const, text: item.answer.join(" ") },
+      })),
+    ),
   };
 }

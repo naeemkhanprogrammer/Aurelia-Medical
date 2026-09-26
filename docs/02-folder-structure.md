@@ -9,8 +9,8 @@ aurelia-medical/
 │   │   ├── (marketing)/     # public site route group — layout adds header/footer
 │   │   │   ├── layout.tsx
 │   │   │   ├── page.tsx     # Home ("/")
-│   │   │   ├── doctors/ services/ book-appointment/ …
-│   │   │   ├── loading.tsx  error.tsx
+│   │   │   ├── about/ contact/ doctors/ services/ faqs/ careers/ … (one folder per route)
+│   │   │   ├── error.tsx   (no loading.tsx — see 05-routing)
 │   │   ├── layout.tsx       # root: <html>, fonts, global metadata
 │   │   ├── not-found.tsx  global-error.tsx
 │   │   ├── sitemap.ts  robots.ts  icon.svg

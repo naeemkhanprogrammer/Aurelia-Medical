@@ -26,6 +26,7 @@ import { getDoctorsByService } from "@/features/doctors/api";
 import { DoctorCard } from "@/features/doctors/components/doctor-card";
 import { getServiceBySlug, getServices, getServiceSlugs } from "@/features/services/api";
 import { cn } from "@/lib/cn";
+import { buildBreadcrumbs } from "@/lib/breadcrumbs";
 import { breadcrumbJsonLd } from "@/lib/seo/json-ld";
 import { buildMetadata } from "@/lib/seo/metadata";
 
@@ -57,11 +58,10 @@ export default async function ServiceDetailPage({ params }: PageProps<"/services
   const [team, allServices] = await Promise.all([getDoctorsByService(service.slug), getServices()]);
   const otherServices = allServices.filter((item) => item.slug !== service.slug);
   const t = servicesPageContent.detail;
-  const breadcrumbs = [
-    { name: uiStrings.breadcrumbHome, path: routes.home },
+  const breadcrumbs = buildBreadcrumbs(
     { name: servicesPageContent.seo.title, path: routes.services },
     { name: service.name, path: routes.service(service.slug) },
-  ];
+  );
 
   return (
     <>
