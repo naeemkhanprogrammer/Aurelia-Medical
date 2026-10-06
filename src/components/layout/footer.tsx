@@ -58,7 +58,7 @@ export function Footer() {
             aria-label={uiStrings.homeLinkLabel}
             className="inline-block rounded-md"
           >
-            <Logo tone="inverse" />
+            <Logo size="lg" />
           </Link>
           <p className="mt-5 max-w-xs text-sm leading-relaxed">{siteConfig.description}</p>
           <ul className="mt-6 flex gap-3" aria-label={t.socialTitle}>

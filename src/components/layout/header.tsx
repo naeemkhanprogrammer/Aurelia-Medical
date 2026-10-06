@@ -21,7 +21,7 @@ export function Header() {
           aria-label={uiStrings.homeLinkLabel}
           className="shrink-0 rounded-md"
         >
-          <Logo />
+          <Logo preload />
         </Link>
         <DesktopNav items={mainNav} />
         <div className="flex items-center gap-2">

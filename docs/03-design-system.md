@@ -61,6 +61,13 @@ Shared: `Logo`/`LogoMark` (placeholder), `ExternalLink`, `BookingLink`, `PhoneLi
 Also: `CtaButton` (renders a content-defined `CtaLink`), `InfoCard`.
 Sections: `PageHero`, `SplitSection`, `CtaBand`, `ProgressivePage`, `LegalDocument`.
 
+## Logo
+
+- **Official logo:** `public/images/brand/logo.jpg` (tight crop of the client-supplied `public/images/logo.jpeg`), configured in `src/config/brand.ts` and rendered by `<Logo size="sm|md|lg">` with `next/image` (AVIF/WebP, preloaded in the header).
+- It is a raster on a navy background, so it appears as a rounded navy badge on light surfaces and blends into navy surfaces (footer).
+- `LogoMark` (vector) is kept only for decorative watermarks and the favicon.
+- ⚠️ The supplied logo reads **"Medical Clinic"** while the site name is **"Medical Group"** — confirm with the client. A transparent SVG/PNG (ideally a horizontal lockup) would read better at header size.
+
 ## Imagery
 
 No stock photos of fictional doctors ship. Until real photography arrives: branded hero composition (`HeroVisual`) and monogram avatars (`DoctorAvatar`). Supplying `hero.image` or `doctor.photo` in data switches to `next/image` automatically.

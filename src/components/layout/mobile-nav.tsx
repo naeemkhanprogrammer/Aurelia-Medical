@@ -67,7 +67,7 @@ export function MobileNav({ items, secondaryItems }: MobileNavProps) {
       <div className="flex h-full flex-col">
         <div className="flex items-center justify-between border-b border-border px-5 py-4">
           <Link href={routes.home} aria-label={uiStrings.homeLinkLabel} onClick={close}>
-            <Logo />
+            <Logo size="sm" />
           </Link>
           <Button variant="ghost" size="icon" aria-label={uiStrings.closeMenu} onClick={close}>
             <X aria-hidden className="size-6!" />

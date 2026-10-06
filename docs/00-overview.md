@@ -35,16 +35,16 @@ Build trust & credibility · strong local SEO · showcase doctors & services · 
 
 ## Placeholder inventory (replace before launch)
 
-| Item                                           | Location                                                                               |
-| ---------------------------------------------- | -------------------------------------------------------------------------------------- |
-| Logo & favicon                                 | `src/components/shared/logo.tsx`, `src/app/icon.svg`                                   |
-| Contact details, hours, map                    | `src/config/contact.ts`                                                                |
-| Third-party URLs                               | `src/config/external-links.ts`                                                         |
-| Social profiles                                | `src/config/navigation.ts` (`socialLinks`)                                             |
-| Doctor profiles (dummy)                        | `src/data/doctors.ts`                                                                  |
-| Service copy                                   | `src/data/services.ts`                                                                 |
-| Testimonials                                   | `src/data/testimonials.ts`                                                             |
-| Stats                                          | `src/data/pages/home.ts`                                                               |
-| FAQs, fees, careers, resources, privacy policy | `src/data/faqs.ts`, `src/data/pages/*`, `src/data/careers.ts`, `src/data/resources.ts` |
-| Downloadable forms (PDFs)                      | `public/documents/` + `file` field in `src/data/resources.ts`                          |
-| Legal name, domain                             | `src/config/site.ts`, `NEXT_PUBLIC_SITE_URL`                                           |
+| Item                                           | Location                                                                                                                           |
+| ---------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| Favicon / OG mark (vector approximation)       | `src/app/icon.svg`, `src/components/shared/logo.tsx` (`LogoMark`) — header/footer use the official logo from `src/config/brand.ts` |
+| Contact details, hours, map                    | `src/config/contact.ts`                                                                                                            |
+| Third-party URLs                               | `src/config/external-links.ts`                                                                                                     |
+| Social profiles                                | `src/config/navigation.ts` (`socialLinks`)                                                                                         |
+| Doctor profiles (dummy)                        | `src/data/doctors.ts`                                                                                                              |
+| Service copy                                   | `src/data/services.ts`                                                                                                             |
+| Testimonials                                   | `src/data/testimonials.ts`                                                                                                         |
+| Stats                                          | `src/data/pages/home.ts`                                                                                                           |
+| FAQs, fees, careers, resources, privacy policy | `src/data/faqs.ts`, `src/data/pages/*`, `src/data/careers.ts`, `src/data/resources.ts`                                             |
+| Downloadable forms (PDFs)                      | `public/documents/` + `file` field in `src/data/resources.ts`                                                                      |
+| Legal name, domain                             | `src/config/site.ts`, `NEXT_PUBLIC_SITE_URL`                                                                                       |

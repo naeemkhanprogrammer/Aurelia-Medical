@@ -1,10 +1,12 @@
+import Image from "next/image";
+
+import { brandAssets } from "@/config/brand";
 import { cn } from "@/lib/cn";
 
 /**
- * ⚠️ PLACEHOLDER LOGO — a web approximation of the Aurelia brand mark (gold arc,
- * serif "A" with heartbeat crossbar). Replace with the official SVG from the
- * brand handoff (AI/EPS/SVG) when supplied. Colours come from design tokens,
- * so the logo follows any re-theme automatically.
+ * `LogoMark` — simplified vector of the brand mark, used ONLY for decorative
+ * watermarks (hero/CTA backgrounds, avatars, 404). Follows design tokens.
+ * The real logo (`Logo`) is the official raster asset from config/brand.ts.
  */
 
 export function LogoMark({ className }: { className?: string }) {
@@ -37,39 +39,36 @@ export function LogoMark({ className }: { className?: string }) {
 }
 
 export interface LogoProps {
-  tone?: "default" | "inverse";
-  /** Hide the wordmark on very small spaces. */
-  variant?: "full" | "mark";
+  /** Visual size; the image keeps its aspect ratio. */
+  size?: "sm" | "md" | "lg";
+  /** Load eagerly (use for the above-the-fold header logo only). */
+  preload?: boolean;
   className?: string;
 }
 
-export function Logo({ tone = "default", variant = "full", className }: LogoProps) {
+/** Height classes + matching `sizes` hints (rendered width = height × aspect ratio 1.58). */
+const sizeConfig: Record<NonNullable<LogoProps["size"]>, { className: string; sizes: string }> = {
+  sm: { className: "h-12", sizes: "76px" },
+  md: { className: "h-14 sm:h-16", sizes: "(min-width: 640px) 101px, 88px" },
+  lg: { className: "h-20", sizes: "126px" },
+};
+
+/**
+ * Official logo (raster, navy background). Rendered with next/image so it is
+ * served as AVIF/WebP at the exact size needed. Rounded to sit cleanly as a
+ * badge on light surfaces; blends seamlessly on navy surfaces.
+ */
+export function Logo({ size = "md", preload, className }: LogoProps) {
+  const { logo } = brandAssets;
   return (
-    <span className={cn("inline-flex items-center gap-3", className)}>
-      <LogoMark className="size-11 shrink-0 sm:size-12" />
-      {variant === "full" && (
-        <span className="flex flex-col items-center leading-none">
-          {/* Wordmark letter-spacing mirrors the brand guide lockup. */}
-          <span
-            className={cn(
-              "font-heading text-[1.65rem] font-semibold tracking-[0.14em] uppercase",
-              tone === "inverse" ? "text-inverse-foreground" : "text-heading",
-            )}
-          >
-            Aurelia
-          </span>
-          <span
-            className={cn(
-              "mt-1 flex items-center gap-1.5 text-[0.5rem] font-semibold tracking-[0.32em] uppercase",
-              tone === "inverse" ? "text-accent-soft" : "text-accent-ink",
-            )}
-          >
-            <span aria-hidden className="h-px w-3 bg-current" />
-            Medical Group
-            <span aria-hidden className="h-px w-3 bg-current" />
-          </span>
-        </span>
-      )}
-    </span>
+    <Image
+      src={logo.src}
+      alt={logo.alt}
+      width={logo.width}
+      height={logo.height}
+      preload={preload}
+      sizes={sizeConfig[size].sizes}
+      className={cn("w-auto rounded-md", sizeConfig[size].className, className)}
+    />
   );
 }
