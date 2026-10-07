@@ -63,7 +63,7 @@ Sections: `PageHero`, `SplitSection`, `CtaBand`, `ProgressivePage`, `LegalDocume
 
 ## Logo
 
-- **Official logo:** `public/images/brand/logo.jpg` (tight crop of the client-supplied `public/images/logo.jpeg`), configured in `src/config/brand.ts` and rendered by `<Logo size="sm|md|lg">` with `next/image` (AVIF/WebP, preloaded in the header).
+- **Official logo:** `public/images/brand/logo.png` (tight crop of the client-supplied `public/images/logo.png`), configured in `src/config/brand.ts` and rendered by `<Logo size="sm|md|lg">` with `next/image` (AVIF/WebP, preloaded in the header).
 - It is a raster on a navy background, so it appears as a rounded navy badge on light surfaces and blends into navy surfaces (footer).
 - `LogoMark` (vector) is kept only for decorative watermarks and the favicon.
 - ⚠️ The supplied logo reads **"Medical Clinic"** while the site name is **"Medical Group"** — confirm with the client. A transparent SVG/PNG (ideally a horizontal lockup) would read better at header size.

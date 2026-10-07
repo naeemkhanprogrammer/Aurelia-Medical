@@ -46,11 +46,11 @@ export interface LogoProps {
   className?: string;
 }
 
-/** Height classes + matching `sizes` hints (rendered width = height × aspect ratio 1.58). */
+/** Height classes + matching `sizes` hints (rendered width = height × aspect ratio 1.54). */
 const sizeConfig: Record<NonNullable<LogoProps["size"]>, { className: string; sizes: string }> = {
-  sm: { className: "h-12", sizes: "76px" },
-  md: { className: "h-14 sm:h-16", sizes: "(min-width: 640px) 101px, 88px" },
-  lg: { className: "h-20", sizes: "126px" },
+  sm: { className: "h-12", sizes: "74px" },
+  md: { className: "h-14 sm:h-16", sizes: "(min-width: 640px) 99px, 86px" },
+  lg: { className: "h-20", sizes: "123px" },
 };
 
 /**
