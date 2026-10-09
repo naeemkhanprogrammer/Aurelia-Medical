@@ -61,7 +61,7 @@ export function MobileNav({ items, secondaryItems }: MobileNavProps) {
         "fixed inset-y-0 right-0 left-auto m-0 h-dvh max-h-none w-full max-w-sm bg-surface p-0 text-foreground shadow-floating",
         "translate-x-full transition-[translate,overlay,display] transition-discrete duration-300 ease-out-soft open:translate-x-0 starting:open:translate-x-full",
         "backdrop:bg-primary/60 backdrop:backdrop-blur-sm",
-        "lg:hidden",
+        "xl:hidden",
       )}
     >
       <div className="flex h-full flex-col">

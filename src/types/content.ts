@@ -232,3 +232,16 @@ export interface ProgressivePageContent {
   noticeTitle: string;
   notice: string;
 }
+
+/* ── Gallery ──────────────────────────────────────────────────────────────── */
+
+export interface GalleryCategory {
+  id: string;
+  label: string;
+}
+
+export interface GalleryImage extends ImageAsset {
+  id: string;
+  caption: string;
+  categoryId: string;
+}

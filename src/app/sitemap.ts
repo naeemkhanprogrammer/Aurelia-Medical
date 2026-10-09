@@ -21,6 +21,7 @@ const STATIC_PAGES: readonly Page[] = [
   { path: routes.bookAppointment, priority: 0.9, changeFrequency: "monthly" },
   { path: routes.contact, priority: 0.8, changeFrequency: "yearly" },
   { path: routes.about, priority: 0.7, changeFrequency: "yearly" },
+  { path: routes.gallery, priority: 0.6, changeFrequency: "monthly" },
   { path: routes.insurance, priority: 0.6, changeFrequency: "yearly" },
   { path: routes.patientResources, priority: 0.6, changeFrequency: "monthly" },
   { path: routes.faqs, priority: 0.6, changeFrequency: "monthly" },

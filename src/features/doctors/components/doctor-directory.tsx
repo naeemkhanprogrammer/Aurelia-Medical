@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 
+import { FilterChips } from "@/components/shared/filter-chips";
 import { doctorsPageContent } from "@/data/pages/doctors";
-import { cn } from "@/lib/cn";
 import type { Doctor } from "@/types/content";
 
 import { DoctorCard } from "./doctor-card";
@@ -34,27 +34,12 @@ export function DoctorDirectory({ doctors, specialties }: DoctorDirectoryProps) 
   return (
     <div>
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <div role="group" aria-label={t.filterLabel} className="flex flex-wrap gap-2">
-          {options.map((option) => {
-            const pressed = option.slug === active;
-            return (
-              <button
-                key={option.slug}
-                type="button"
-                aria-pressed={pressed}
-                onClick={() => setActive(option.slug)}
-                className={cn(
-                  "rounded-full border px-4 py-2 text-sm font-medium transition-colors",
-                  pressed
-                    ? "border-primary bg-primary text-primary-foreground"
-                    : "border-border-strong bg-surface text-muted-foreground hover:border-primary hover:text-heading",
-                )}
-              >
-                {option.name}
-              </button>
-            );
-          })}
-        </div>
+        <FilterChips
+          label={t.filterLabel}
+          value={active}
+          onChange={setActive}
+          options={options.map((option) => ({ value: option.slug, label: option.name }))}
+        />
         <p aria-live="polite" className="text-sm text-muted-foreground">
           {t.resultsLabel(visible.length)}
         </p>

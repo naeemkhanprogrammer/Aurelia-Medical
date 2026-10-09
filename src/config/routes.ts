@@ -13,6 +13,7 @@ export const routes = {
   patientResources: "/patient-resources",
   careers: "/careers",
   contact: "/contact",
+  gallery: "/gallery",
   faqs: "/faqs",
   privacyPolicy: "/privacy-policy",
   // Progressive ("coming soon") pages

@@ -1,12 +1,19 @@
 import "server-only";
 
-import type { BreadcrumbList, FAQPage, MedicalClinic, Physician, WithContext } from "schema-dts";
+import type {
+  BreadcrumbList,
+  FAQPage,
+  ImageGallery,
+  MedicalClinic,
+  Physician,
+  WithContext,
+} from "schema-dts";
 
 import { contactConfig } from "@/config/contact";
 import { env } from "@/config/env";
 import { routes } from "@/config/routes";
 import { siteConfig } from "@/config/site";
-import type { Doctor, FaqCategory, Service } from "@/types/content";
+import type { Doctor, FaqCategory, GalleryImage, Service } from "@/types/content";
 
 const absolute = (path: string) => new URL(path, env.siteUrl).toString();
 
@@ -114,5 +121,26 @@ export function faqPageJsonLd(categories: readonly FaqCategory[]): WithContext<F
         acceptedAnswer: { "@type": "Answer" as const, text: item.answer.join(" ") },
       })),
     ),
+  };
+}
+
+export function imageGalleryJsonLd(
+  name: string,
+  images: readonly GalleryImage[],
+): WithContext<ImageGallery> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ImageGallery",
+    name,
+    url: absolute(routes.gallery),
+    about: { "@id": ORG_ID() },
+    image: images.map((image) => ({
+      "@type": "ImageObject" as const,
+      contentUrl: absolute(image.src),
+      caption: image.caption,
+      description: image.alt,
+      width: `${image.width}`,
+      height: `${image.height}`,
+    })),
   };
 }

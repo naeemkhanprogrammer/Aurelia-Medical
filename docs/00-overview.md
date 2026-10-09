@@ -47,4 +47,5 @@ Build trust & credibility · strong local SEO · showcase doctors & services · 
 | Stats                                          | `src/data/pages/home.ts`                                                                                                           |
 | FAQs, fees, careers, resources, privacy policy | `src/data/faqs.ts`, `src/data/pages/*`, `src/data/careers.ts`, `src/data/resources.ts`                                             |
 | Downloadable forms (PDFs)                      | `public/documents/` + `file` field in `src/data/resources.ts`                                                                      |
+| Gallery photos (generated placeholders)        | `public/images/gallery/` + `src/data/gallery.ts`                                                                                   |
 | Legal name, domain                             | `src/config/site.ts`, `NEXT_PUBLIC_SITE_URL`                                                                                       |

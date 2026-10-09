@@ -16,7 +16,7 @@ export function MobileNavToggle() {
     <Button
       variant="ghost"
       size="icon"
-      className="lg:hidden"
+      className="xl:hidden"
       aria-label={uiStrings.openMenu}
       aria-expanded={isOpen}
       aria-controls={MOBILE_NAV_ID}

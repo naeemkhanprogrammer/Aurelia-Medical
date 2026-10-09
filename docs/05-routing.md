@@ -8,6 +8,7 @@
 | `/doctors`, `/doctors/[slug]`                                                              | Doctors directory / profile                   | ✅                            |
 | `/services`, `/services/[slug]`                                                            | Services overview / detail                    | ✅                            |
 | `/book-appointment`                                                                        | Booking hand-off                              | ✅                            |
+| `/gallery`                                                                                 | Gallery (masonry + lightbox)                  | ✅                            |
 | `/about` `/insurance` `/patient-resources` `/careers` `/contact` `/faqs` `/privacy-policy` | Phase 1 pages                                 | ✅                            |
 | `/referrals` `/new-patients` `/telemedicine` `/community-programs`                         | Progressive pages (noindex until `published`) | ✅                            |
 | Blog / News                                                                                | —                                             | Future phase (not scaffolded) |

@@ -5,7 +5,7 @@
 - **Landmarks:** `header` (banner), `nav` with distinct `aria-label`s (Main, Mobile, Footer, Patients, Breadcrumb), `main#main-content`, `footer`.
 - **Skip link** as first focusable element.
 - **Focus:** global `:focus-visible` gold outline; never removed without a replacement.
-- **Mobile nav:** native `<dialog>` + `showModal()` → focus trap, Escape to close, inert background; toggle has `aria-expanded`/`aria-controls`; body scroll locked.
+- **Mobile nav:** native `<dialog>` + `showModal()` → focus trap, Escape to close, inert background; toggle has `aria-expanded`/`aria-controls`; body scroll locked. Desktop nav shows from `xl` (1280 px); the drawer is used below that.
 - **Active nav:** `aria-current="page"`.
 - **External links:** visually hidden “(opens in a new tab)” suffix.
 - **Cards:** single stretched link per card (one tab stop, meaningful name).
