@@ -113,6 +113,8 @@ export function GalleryLightbox({ images, index, onClose, onNavigate }: GalleryL
               width={image.width}
               height={image.height}
               sizes="100vw"
+              placeholder={image.blurDataURL ? "blur" : "empty"}
+              blurDataURL={image.blurDataURL}
               className="max-h-[calc(100dvh-11rem)] w-auto max-w-full rounded-lg object-contain shadow-floating"
             />
             <figcaption className="text-center font-heading text-h4 font-semibold">

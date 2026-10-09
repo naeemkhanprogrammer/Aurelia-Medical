@@ -79,6 +79,8 @@ function GalleryTile({ image, category, onOpen, priority = false }: GalleryTileP
         height={image.height}
         sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
         loading={priority ? "eager" : "lazy"}
+        placeholder={image.blurDataURL ? "blur" : "empty"}
+        blurDataURL={image.blurDataURL}
         fetchPriority={priority ? "high" : "auto"}
         className="h-auto w-full transition-transform duration-700 ease-out-soft group-hover:scale-[1.04]"
       />

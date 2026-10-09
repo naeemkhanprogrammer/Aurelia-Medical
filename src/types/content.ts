@@ -244,4 +244,8 @@ export interface GalleryImage extends ImageAsset {
   id: string;
   caption: string;
   categoryId: string;
+  /** Tiny base64 preview shown (blurred) while the photo loads. Optional. */
+  blurDataURL?: string;
+  /** Source/licence record for stock photos (not rendered). Remove when replaced with clinic photos. */
+  credit?: string;
 }

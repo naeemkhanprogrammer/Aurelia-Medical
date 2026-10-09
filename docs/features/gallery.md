@@ -19,12 +19,13 @@
 - Accessed through `features/gallery/api.ts` (async, server-only) so a CMS/media library can replace it later.
 - Page copy: `data/pages/gallery.ts`.
 
-### ⚠️ Placeholder images
+### ⚠️ Dummy photos
 
-`public/images/gallery/*.jpg` are **generated, branded placeholders** (no stock photos, no external requests). To use real photos:
+`public/images/gallery/*.jpg` are **free Unsplash stock photos** (Unsplash License: free commercial use, no attribution required). Each entry keeps a `credit` field (photographer + source URL) for our records. They are **not** Aurelia's staff or facility and must be replaced before launch. Photos showing another clinic's name/branding were deliberately excluded. To use real photos:
 
 1. Drop the photo into `public/images/gallery/` (JPG/WebP, ≥ 1600 px on the long edge).
-2. Update the matching entry in `data/gallery.ts` — `src`, real `width`/`height`, and a descriptive `alt`.
+2. Update the matching entry in `data/gallery.ts` — `src`, real `width`/`height`, `alt`, `caption`; remove `credit`.
+3. Optional: regenerate `blurDataURL` (a ~12 px WebP as base64) for the blur-up loading effect; without it the tile simply shows a neutral background while loading.
    Mixed orientations are fine — the masonry layout adapts.
 
 **Privacy:** only publish photos of patients/staff with written consent. Avoid identifiable patients entirely.
@@ -42,7 +43,7 @@ Local only (category filter, open image index) — no global store needed (docs/
 
 ## Performance
 
-- `next/image` with per-column `sizes` (AVIF/WebP), all thumbnails lazy-loaded except the first, which is the mobile LCP element (`loading="eager"` + `fetchPriority="high"`; same URL in every layout so it downloads once). Lighthouse mobile measured after the fix.
+- `next/image` with per-column `sizes` (AVIF/WebP), all thumbnails lazy-loaded except the first, which is the mobile LCP element (`loading="eager"` + `fetchPriority="high"`; same URL in every layout so it downloads once). React 19 also emits a `<link rel="preload">` for it automatically. Blur-up previews (`blurDataURL`, ~140 bytes each) show while photos load. Lighthouse mobile with real photos: Performance 88–90, A11y/Best Practices/SEO 100, CLS 0.
 - No carousel/lightbox library — native `<dialog>` + a few lines of state.
 - Lightbox loads only the current image at full width.
 
