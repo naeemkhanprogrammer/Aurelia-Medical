@@ -25,7 +25,7 @@ export const externalLinks = {
     url: "https://booking.example.com/aurelia-medical",
     provider: "Online booking platform (TBC)",
     description: "Book, reschedule or cancel an appointment.",
-    params: { service: "service", visitType: "visit_type" },
+    params: { service: "service" },
     isPlaceholder: true,
   },
   patientRegistration: {

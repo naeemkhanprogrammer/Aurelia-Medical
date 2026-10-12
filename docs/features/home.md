@@ -5,16 +5,16 @@
 
 ## Sections (top → bottom)
 
-| Section                            | Component                                            | Location                    |
-| ---------------------------------- | ---------------------------------------------------- | --------------------------- |
-| Hero                               | `HomeHero` + `HeroVisual`                            | `features/home/components/` |
-| Quick booking bar                  | `QuickBookingBar` (client)                           | `features/home/components/` |
-| Services                           | `ServicesHighlight` → `SplitSection` + `FeatureCard` |                             |
-| Stats (flag `stats`)               | `StatsBand` + `ProgressRing`                         |                             |
-| Featured doctors                   | `FeaturedDoctors` → `Carousel` + `DoctorCard`        |                             |
-| Patient resources                  | `ResourcesHighlight`                                 |                             |
-| Testimonials (flag `testimonials`) | `TestimonialsSection` + `TestimonialCard`            |                             |
-| CTA band                           | `CtaBand`                                            | `components/sections/`      |
+| Section                            | Component                                                        | Location                            |
+| ---------------------------------- | ---------------------------------------------------------------- | ----------------------------------- |
+| Hero                               | `HomeHero` + `HeroVisual`                                        | `features/home/components/`         |
+| Clinic hours panel (overlaps hero) | `ClinicHoursPanel` → `OpenStatus` + `HoursTiles` (client leaves) | `features/clinic-hours/components/` |
+| Services                           | `ServicesHighlight` → `SplitSection` + `FeatureCard`             |                                     |
+| Stats (flag `stats`)               | `StatsBand` + `ProgressRing`                                     |                                     |
+| Featured doctors                   | `FeaturedDoctors` → `Carousel` + `DoctorCard`                    |                                     |
+| Patient resources                  | `ResourcesHighlight`                                             |                                     |
+| Testimonials (flag `testimonials`) | `TestimonialsSection` + `TestimonialCard`                        |                                     |
+| CTA band                           | `CtaBand`                                                        | `components/sections/`              |
 
 ## Data / config
 
@@ -22,17 +22,18 @@
 
 ## State
 
-Local only: `QuickBookingBar` (service, visit type), `Carousel` (edge state). No global state.
+No global state. `OpenStatus` / `HoursTiles` read a shared minute clock (`hooks/use-current-minute.ts`, `useSyncExternalStore`, `null` on the server so static HTML has no time-dependent markup). `Carousel` keeps local edge state.
 
 ## UX decisions
 
-- The mock's booking bar had "date" and "phone/email" inputs. **Replaced** with service + visit-type selectors, because collecting contact details would mean handling personal data on our site. The bar is a _link_ (not a form) to the booking platform with pre-selection params.
+- **Clinic hours panel** (client request, replaces the earlier quick-booking bar): live "Open now / Closed now" + next change, weekly hours as tiles with **today highlighted** (clinic time zone, America/Edmonton), Book Appointment + click-to-call, address with Get directions, urgent-care note. No form — the clinic will add its third-party booking / wait-time widget later; this card is the reserved slot for it.
+- Status height is reserved (`min-h-7`) and today's highlight only changes colours, so hydration causes no layout shift (CLS 0).
 - Hero uses a branded composition instead of stock doctor photos; set `hero.image` to use a real photo.
 - Highlight word ("closer") in italic gold, matching the mock's accent word.
 
 ## Performance
 
-Page is static. Client JS: quick booking bar, carousels, reveal animations (LazyMotion). No images yet (SVG/CSS visuals).
+Page is static. Client JS: clinic-hours status/tiles (tiny), carousels, reveal animations (LazyMotion). No images yet (SVG/CSS visuals).
 
 ## Accessibility
 

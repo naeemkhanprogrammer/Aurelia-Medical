@@ -12,11 +12,11 @@ Components subscribe through **atomic selectors** (`selectIsMobileNavOpen`, …)
 
 ## Deliberately local
 
-| State                          | Component         | Reason                                                                                                        |
-| ------------------------------ | ----------------- | ------------------------------------------------------------------------------------------------------------- |
-| Specialty filter               | `DoctorDirectory` | Only this component reads it; keeps page static. (Could move to URL search params if deep-linking is wanted.) |
-| Service / visit type selection | `QuickBookingBar` | Used only to build the outbound link.                                                                         |
-| Carousel edge state            | `Carousel`        | Per-instance UI.                                                                                              |
+| State                 | Component                                     | Reason                                                                                                        |
+| --------------------- | --------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| Specialty filter      | `DoctorDirectory`                             | Only this component reads it; keeps page static. (Could move to URL search params if deep-linking is wanted.) |
+| Current time (minute) | `useCurrentMinute` (shared hook, not a store) | Each live widget subscribes to the same external clock via `useSyncExternalStore`; no app state involved.     |
+| Carousel edge state   | `Carousel`                                    | Per-instance UI.                                                                                              |
 
 ## Not added (yet)
 

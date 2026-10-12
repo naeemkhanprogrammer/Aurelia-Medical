@@ -12,12 +12,12 @@ import { getFeaturedDoctors } from "@/features/doctors/api";
 import {
   FeaturedDoctors,
   HomeHero,
-  QuickBookingBar,
   ResourcesHighlight,
   ServicesHighlight,
   StatsBand,
   TestimonialsSection,
 } from "@/features/home";
+import { ClinicHoursPanel } from "@/features/clinic-hours";
 import { getServices } from "@/features/services/api";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { medicalClinicJsonLd } from "@/lib/seo/json-ld";
@@ -41,10 +41,7 @@ export default async function HomePage() {
       <JsonLd data={medicalClinicJsonLd(services)} />
       <HomeHero hero={content.hero} />
       <Container>
-        <QuickBookingBar
-          content={content.quickBooking}
-          services={services.map(({ slug, name }) => ({ slug, name }))}
-        />
+        <ClinicHoursPanel content={content.clinicHours} />
       </Container>
       <ServicesHighlight intro={content.services} services={services} />
       {features.stats && <StatsBand title={content.stats.title} stats={content.stats.items} />}

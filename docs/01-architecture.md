@@ -33,7 +33,7 @@ config/ (site, routes,  ├─► features/<x>/api.ts (async, server-only) ─�
 
 - **Content never lives in components.** Pages pull from `data/` and `config/`, then pass props down.
 - **Data access is async and `server-only`** (`features/doctors/api.ts`, `features/services/api.ts`). Today they read static modules; later they can call a CMS/API with no caller changes.
-- **Client components are leaves**: `NavLink`, `MobileNav`, `MobileNavToggle`, `Carousel`, `Reveal`, `QuickBookingBar`, `DoctorDirectory`. Everything else renders on the server.
+- **Client components are leaves**: `NavLink`, `MobileNav`, `MobileNavToggle`, `Carousel`, `Reveal`, `OpenStatus`, `HoursTiles`, `GalleryBrowser`, `DoctorDirectory`. Everything else renders on the server.
 - **Outbound hand-off**: every patient action goes through `ExternalLink` / `BookingLink` using `buildExternalUrl()` (`src/lib/external-links.ts`). Only non-identifying values (service slug, visit type) may be passed as query params.
 
 ## Rendering

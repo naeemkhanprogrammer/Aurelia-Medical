@@ -17,7 +17,7 @@ import { routes } from "@/config/routes";
 import { uiStrings } from "@/data/common";
 import { contactPageContent as content } from "@/data/pages/contact";
 import { MapEmbed } from "@/features/contact/components/map-embed";
-import { OpenStatus } from "@/features/contact/components/open-status";
+import { OpenStatus } from "@/features/clinic-hours";
 import { buildBreadcrumbs } from "@/lib/breadcrumbs";
 import { formatAddressLines, formatHours } from "@/lib/format";
 import { breadcrumbJsonLd } from "@/lib/seo/json-ld";
@@ -127,7 +127,7 @@ export default function ContactPage() {
           <aside className="flex flex-col gap-6 lg:col-start-2 lg:row-span-2 lg:row-start-1">
             <Card padding="lg">
               <h2 className="text-h3">{content.hours.title}</h2>
-              <OpenStatus className="mt-3" />
+              <OpenStatus className="mt-3 min-h-7" />
               <dl className="mt-5 grid grid-cols-[auto_1fr] gap-x-6 gap-y-2.5 text-sm">
                 {hours.map((entry) => (
                   <div key={entry.label} className="contents">

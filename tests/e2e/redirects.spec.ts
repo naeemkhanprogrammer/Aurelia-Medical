@@ -10,12 +10,17 @@ test("booking CTAs hand off to the external platform in a new tab", async ({ pag
   }
 });
 
-test("quick booking bar pre-selects the chosen service", async ({ page }) => {
+test("home clinic-hours panel shows live status, weekly hours and actions", async ({ page }) => {
   await page.goto("/");
-  await page.getByLabel("Select a service").selectOption("respirology");
-  const cta = page
-    .getByRole("link", { name: /Book Appointment.*new tab/ })
-    .filter({ hasText: "Book Appointment" });
-  await expect(page.locator('a[href*="service=respirology"]').first()).toBeVisible();
-  await expect(cta.first()).toBeVisible();
+  const panel = page.locator("section", {
+    has: page.getByRole("heading", { name: "Clinic hours" }),
+  });
+  await expect(panel.getByRole("status")).toHaveText(/Open now|Closed now/);
+  await expect(panel.getByRole("listitem")).toHaveCount(4);
+  await expect(panel.locator('[aria-current="date"]')).toHaveCount(1);
+  await expect(panel.getByRole("link", { name: /Book Appointment/ })).toHaveAttribute(
+    "target",
+    "_blank",
+  );
+  await expect(panel.getByRole("link", { name: /Call/ })).toHaveAttribute("href", /^tel:/);
 });

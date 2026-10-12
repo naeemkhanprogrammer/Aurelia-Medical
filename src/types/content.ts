@@ -115,15 +115,12 @@ export interface HeroContent {
   visualBadges: readonly { icon: IconName; title: string; caption: string }[];
 }
 
-export interface QuickBookingContent {
+export interface ClinicHoursPanelContent {
   title: string;
-  serviceLabel: string;
-  servicePlaceholder: string;
-  visitTypeLabel: string;
-  visitTypes: readonly { value: string; label: string }[];
-  submitLabel: string;
-  assurances: readonly string[];
-  privacyNote: string;
+  bookLabel: string;
+  /** Text before the phone number, e.g. "Call". */
+  callPrefix: string;
+  directionsLabel: string;
 }
 
 export interface CtaBandContent {
@@ -135,7 +132,7 @@ export interface CtaBandContent {
 
 export interface HomeContent {
   hero: HeroContent;
-  quickBooking: QuickBookingContent;
+  clinicHours: ClinicHoursPanelContent;
   services: SectionIntro;
   doctors: SectionIntro;
   resources: SectionIntro & { items: readonly HighlightItem[] };

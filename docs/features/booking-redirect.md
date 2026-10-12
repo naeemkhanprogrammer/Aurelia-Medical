@@ -5,7 +5,7 @@
 
 ## How the hand-off works
 
-- URL + supported query params: `config/external-links.ts → externalLinks.booking` (`params: { service, visitType }`).
+- URL + supported query params: `config/external-links.ts → externalLinks.booking` (`params: { service }`).
 - Built by `buildExternalUrl("booking", { service })` (`lib/external-links.ts`), rendered by `BookingLink` / `ExternalLink` (new tab, `rel="noopener noreferrer"`, strict referrer policy, SR "(opens in a new tab)").
 - Placeholder links show a dev-only tooltip (`isPlaceholder: true`).
 
@@ -27,7 +27,7 @@ None.
 
 ## Other booking entry points
 
-Header CTA, mobile drawer, home hero, quick booking bar, CTA band, doctor profiles, service pages — all via `BookingLink`.
+Header CTA, mobile drawer, home hero, home clinic-hours panel, CTA band, doctor profiles, service pages — all via `BookingLink`.
 
 ## TODO
 

@@ -30,10 +30,6 @@ export const contactPageContent = {
   },
   hours: {
     title: "Clinic hours",
-    openNow: "Open now",
-    closedNow: "Closed now",
-    opensAt: (time: string) => `Opens ${time}`,
-    closesAt: (time: string) => `Closes ${time}`,
   },
   map: {
     title: "Find us",

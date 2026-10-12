@@ -28,23 +28,11 @@ export const homeContent: HomeContent = {
       },
     ],
   },
-  quickBooking: {
-    title: "Book your appointment",
-    serviceLabel: "Select a service",
-    servicePlaceholder: "Choose a service",
-    visitTypeLabel: "Visit type",
-    visitTypes: [
-      { value: "in-person", label: "In-person visit" },
-      { value: "virtual", label: "Virtual visit" },
-    ],
-    submitLabel: "Book Appointment",
-    assurances: [
-      "New patients welcome",
-      "Referral-based specialist care",
-      "Secure & confidential booking",
-    ],
-    privacyNote:
-      "You'll continue to our secure booking partner. We never store your health information on this website.",
+  clinicHours: {
+    title: "Clinic hours",
+    bookLabel: "Book Appointment",
+    callPrefix: "Call",
+    directionsLabel: "Get directions",
   },
   services: {
     eyebrow: "Our Services",

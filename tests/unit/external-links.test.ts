@@ -9,15 +9,12 @@ describe("buildExternalUrl", () => {
   });
 
   it("maps supported values onto the platform's query keys", () => {
-    const url = new URL(
-      buildExternalUrl("booking", { service: "respirology", visitType: "virtual" }),
-    );
+    const url = new URL(buildExternalUrl("booking", { service: "respirology" }));
     expect(url.searchParams.get(externalLinks.booking.params.service)).toBe("respirology");
-    expect(url.searchParams.get(externalLinks.booking.params.visitType)).toBe("virtual");
   });
 
   it("skips empty values", () => {
-    const url = new URL(buildExternalUrl("booking", { service: "", visitType: undefined }));
+    const url = new URL(buildExternalUrl("booking", { service: "" }));
     expect([...url.searchParams.keys()]).toHaveLength(0);
   });
 

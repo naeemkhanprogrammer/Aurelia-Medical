@@ -3,7 +3,7 @@
 ## Decisions
 
 - **Static prerendering** for all routes → CDN-served HTML.
-- **Server Components by default.** Client JS is limited to: nav active state, mobile drawer, carousel buttons, reveal animation, quick-booking selects, doctor filter.
+- **Server Components by default.** Client JS is limited to: nav active state, mobile drawer, carousel buttons, reveal animation, clinic-hours status/today highlight, doctor & gallery filters, gallery lightbox.
 - **Fonts:** `next/font` (self-hosted, `display: swap`, subset latin, CSS variables).
 - **Images:** `next/image` with AVIF/WebP, explicit `sizes`; hero/profile use `preload`. Placeholders are SVG/CSS (zero image bytes).
 - **Motion:** `LazyMotion` + `m` + `domAnimation` (~15 kB instead of full bundle), `strict` mode; honours `prefers-reduced-motion`; `<noscript>` fallback keeps content visible without JS.

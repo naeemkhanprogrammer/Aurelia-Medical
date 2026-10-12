@@ -5,13 +5,13 @@
 
 ## Sections & components
 
-| Section         | Components                     | Notes                                                    |
-| --------------- | ------------------------------ | -------------------------------------------------------- |
-| Contact methods | local `ContactMethod` card     | click-to-call, `mailto:`, fax, secure enquiry (external) |
-| Clinic hours    | `OpenStatus` (client) + `<dl>` | live Open/Closed in **America/Edmonton** time            |
-| Visit info      | inverse card                   | address, parking, accessibility, transit                 |
-| Map             | `MapEmbed` (client)            | click-to-load facade, behind `FEATURE_MAP_EMBED`         |
-| Emergency       | `EmergencyNotice`              |                                                          |
+| Section         | Components                                              | Notes                                                    |
+| --------------- | ------------------------------------------------------- | -------------------------------------------------------- |
+| Contact methods | local `ContactMethod` card                              | click-to-call, `mailto:`, fax, secure enquiry (external) |
+| Clinic hours    | `OpenStatus` (shared, `features/clinic-hours`) + `<dl>` | live Open/Closed in **America/Edmonton** time            |
+| Visit info      | inverse card                                            | address, parking, accessibility, transit                 |
+| Map             | `MapEmbed` (client)                                     | click-to-load facade, behind `FEATURE_MAP_EMBED`         |
+| Emergency       | `EmergencyNotice`                                       |                                                          |
 
 Source order is methods → hours/visit → map (the mobile order); on desktop the sidebar spans both rows.
 
